@@ -1,0 +1,122 @@
+
+/* src/components/ResumeSection/ResumeSection.css */
+.custom-inner-holder {
+  float: left;
+  margin-top: 60px;
+  width: 100%;
+  padding-left: 20px;
+  border-left: 1px solid #010101;
+}
+
+.custom-inner {
+  float: left;
+  width: 100%;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.resum-header {
+  float: left;
+  width: 100%;
+  position: relative;
+  padding: 30px 10px 30px 70px;
+  background: #ddd;
+  border-radius: 8px;
+}
+
+.resum-header h3 {
+  float: left;
+  font-weight: 600;
+  font-size: 18px;
+  text-align: left;
+}
+
+.resum-header h4 {
+  font-size: 14px;
+  text-align: left;
+  float: left;
+  width: 100%;
+  color: #666;
+  margin: 5px 0;
+}
+
+.resum-header span {
+  font-size: 16px;
+  text-transform: uppercase;
+  width: 100%;
+  color: #393939;
+  text-align: left;
+  float: left;
+}
+
+.resum-header i {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #f1f1f1;
+  position: absolute;
+  border-radius: 4px;
+  top: 50%;
+  left: 15px;
+  margin-top: -20px;
+  background: #f1f1f1;
+  color: #70C178;
+  text-align: center;
+}
+
+.resum-header:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -26px;
+  width: 10px;
+  height: 10px;
+  margin-top: -10px;
+  border-radius: 100%;
+  background: #70C178;
+}
+
+.resum-header:after {
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  position: absolute;
+  color: #393939;
+  bottom: 10px;
+  font-size: 70px;
+  right: 10px;
+  opacity: 0.08;
+  transform: rotate(45deg);
+}
+
+.resum-header.edu:after {
+  content: "\f19d";
+}
+
+.resum-header.work:after {
+  content: "\f0b1";
+}
+
+.custom-inner h4 {
+  float: left;
+  width: 100%;
+  padding-bottom: 20px;
+  font-weight: 800;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.custom-inner p {
+  text-align: left;
+  margin: 0;
+  padding: 5px 0;
+}
+
+.custom-inner-dec {
+  float: left;
+  width: 100%;
+  margin-top: 10px;
+  background: #393939;
+  height: 1px;
+}

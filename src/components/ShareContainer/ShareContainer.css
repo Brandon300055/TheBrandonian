@@ -1,0 +1,48 @@
+
+/* src/components/ShareContainer/ShareContainer.css */
+.share-container {
+  position: fixed;
+  z-index: 20;
+  left: 94px;
+  bottom: 30px;
+  visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.share-container.visshare {
+  visibility: visible;
+}
+
+.share-icon {
+  height: 40px;
+  width: 40px;
+  float: left;
+  margin-bottom: 1px;
+  position: relative;
+  font-size: 15px;
+  line-height: 40px;
+  background: #f1f1f1;
+  color: #010101;
+  opacity: 0;
+  cursor: pointer;
+  text-align: center;
+  transition: all 300ms linear;
+}
+
+.share-icon:hover {
+  opacity: 0.6 !important;
+  background: #70C178;
+  color: #fff;
+}
+
+@media only screen and (max-width: 1064px) {
+  .share-container {
+    position: fixed;
+    z-index: 20;
+    left: 100%;
+    margin-left: -60px;
+    bottom: 100%;
+    margin-bottom: -290px;
+    width: 40px;
+  }
+}

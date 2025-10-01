@@ -1,0 +1,16 @@
+:root {
+  --primary-color: #70C178;
+  --secondary-color: #393939;
+  --background-color: #f1f1f1;
+  --text-color: #010101;
+}
+
+/* Apply primary color to all themed elements */
+.color-bg,
+.btn,
+.scroll-nav li a.act-link:before,
+.scroll-nav li a.act-link:after,
+.resum-header:before,
+.progress-bar {
+  background: var(--primary-color) !important;
+}

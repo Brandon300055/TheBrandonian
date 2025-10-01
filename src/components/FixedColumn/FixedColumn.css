@@ -1,0 +1,122 @@
+/* src/components/FixedColumn/FixedColumn.css */
+.fixed-column {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 25%;
+  height: 100%;
+  padding-left: 70px;
+  z-index: 4;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  overflow: hidden;
+  background-color: #73cf79;
+}
+
+.column-image {
+  -webkit-transition: all 600ms;
+  transition: all 600ms;
+}
+
+.column-image.fl-wrap {
+  float: left;
+  width: 100%;
+  position: relative;
+}
+
+.column-image.full-height {
+  height: 100%;
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-attachment: scroll;
+  background-position: left !important;
+  background-repeat: repeat;
+}
+
+.bg.bg-scroll {
+  background-position: center !important;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #010101;
+  opacity: 0.2;
+  z-index: 2;
+}
+
+.bg-title {
+  position: absolute;
+  bottom: -15%;
+  left: 45%;
+  font-size: 94px;
+  width: 100%;
+  min-height: 300px;
+  text-transform: uppercase;
+  font-weight: 900;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  -webkit-transform-origin: left top;
+  -ms-transform-origin: left top;
+  -moz-transform-origin: left top;
+  -o-transform-origin: left top;
+  transform-origin: left top;
+  color: #f1f1f1;
+}
+
+/* This is the key for the fade animation */
+.bg-title span {
+  display: block;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.progress-bar-wrap {
+  position: absolute;
+  top: 20px;
+  left: 100px;
+  right: 30px;
+  height: 20px;
+  z-index: 20;
+}
+
+.progress-bar-wrap:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.51);
+  z-index: 1;
+}
+
+.progress-bar {
+  position: relative;
+  height: 5px;
+  width: 0%;
+  border-radius: 3px;
+  z-index: 4;
+  top: 8px;
+  background: #73cf79;
+  transition: width 0.3s ease;
+}
+
+@media only screen and (max-width: 1064px) {
+  .fixed-column {
+    display: none;
+  }
+}

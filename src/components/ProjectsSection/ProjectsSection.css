@@ -1,0 +1,98 @@
+
+/* src/components/ProjectsSection/ProjectsSection.css */
+.project-box {
+  width: 100%;
+  position: relative;
+  margin: 15px 0;
+  padding: 30px 25px;
+  background: #ddd;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+
+.project-box:hover {
+  transform: scale(1.05);
+  background: #70C178;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-box h3 {
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.project-box h5 {
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  margin: 0;
+  color: #666;
+}
+
+.project-box:hover h3,
+.project-box:hover h5 {
+  color: #fff;
+}
+
+.order-wrap {
+  padding: 30px 25px;
+  margin-top: 30px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+  background: #70C178;
+}
+
+.order-wrap:before {
+  font-family: FontAwesome;
+  content: "\f003";
+  position: absolute;
+  color: #f1f1f1;
+  top: -30px;
+  font-size: 50px;
+  right: 20%;
+  opacity: 0.46;
+  transform: scale(5.2) rotate(45deg);
+  transition: all 300ms linear;
+}
+
+.order-wrap:hover:before {
+  transform: scale(3.2) rotate(25deg);
+}
+
+.order-wrap h4 {
+  font-size: 24px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
+  text-align: left;
+  color: #f1f1f1;
+  position: relative;
+  top: 6px;
+}
+
+.order-wrap button.ord-link {
+  float: right;
+  color: #f1f1f1;
+  font-size: 10px;
+  padding: 15px 20px;
+  background: #333;
+  border-radius: 4px;
+  position: relative;
+  text-transform: uppercase;
+  border: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.order-wrap button.ord-link:hover {
+  color: rgba(255, 255, 255, 0.51);
+  background: #292929;
+}

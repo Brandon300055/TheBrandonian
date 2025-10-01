@@ -1,0 +1,106 @@
+/* src/components/ScrollNav/ScrollNav.css */
+
+.scroll-nav-holder {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  background: #404040;
+  width: 100%;
+  position: sticky !important;
+  top: 0;
+  z-index: 9999;
+  transform: translate3d(0, 0, 0);
+  transition: box-shadow 0.3s ease;
+  float: none !important;
+}
+
+.scroll-nav-holder.sticky {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.scroll-nav {
+  float: none !important;
+}
+
+.scroll-nav ul {
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.scroll-nav li {
+  flex: 1;
+  border-right: 1px solid rgba(255, 255, 255, 0.21);
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #404040;
+}
+
+.scroll-nav li:last-child {
+  border-right: none;
+}
+
+.scroll-nav li a {
+  font-weight: 700;
+  font-size: 10px;
+  position: relative;
+  width: 100%;
+  padding: 25px 0;
+  color: #f1f1f1;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  display: block;
+}
+
+.scroll-nav li a span {
+  position: relative;
+  z-index: 4;
+  transition: all 500ms linear;
+}
+
+.scroll-nav li a:hover span {
+  opacity: 0.5;
+}
+
+.scroll-nav li a:before,
+.scroll-nav li a:after {
+  content: '';
+  position: absolute;
+  height: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+  background: #70C178;
+  transition: all 0.7s ease-in-out;
+}
+
+.scroll-nav li a:before {
+  top: 0;
+  left: 0;
+}
+
+.scroll-nav li a:after {
+  bottom: 0;
+  right: 0;
+}
+
+.scroll-nav li a.act-link:before,
+.scroll-nav li a.act-link:after {
+  height: 100%;
+  opacity: 1;
+}
+
+@media only screen and (max-width: 1064px) and (min-width: 541px) {
+  .scroll-nav-holder {
+    top: 70px;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .scroll-nav-holder {
+    display: none;
+  }
+}
