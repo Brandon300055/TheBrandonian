@@ -60,7 +60,11 @@ function App() {
         />
         
         {/* Menu Overlay */}
-        <Menu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
+        <Menu 
+          isOpen={menuOpen} 
+          onClose={() => setMenuOpen(false)} 
+          onContactClick={() => setModalOpen(true)}
+        />
         
         {/* Hero Section */}
         <HeroSection />

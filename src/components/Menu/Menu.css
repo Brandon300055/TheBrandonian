@@ -1,21 +1,30 @@
-
 /* src/components/Menu/Menu.css */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 25%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 18;
+  padding-left: 70px;
+}
+
 .menu-wrap {
   position: fixed;
   z-index: 19;
-  width: 370px;
+  width: 25%;
   top: 0;
   bottom: 0;
   font-size: 1.15em;
-  padding-left: 10px;
-  transform: translate3d(-320px, 0, 0);
-  transition: transform 0.4s;
+  padding-left: 70px;
+  left: 0;
 }
 
 .menu-inner {
   opacity: 0;
   transform: translate3d(-160px, 0, 0);
-  transition: opacity 0s 0.3s, transform 0s 0.3s;
+  transition: opacity 0.4s, transform 0.4s;
   transition-timing-function: cubic-bezier(.17, .67, .1, 1.27);
   float: left;
   width: 100%;
@@ -24,21 +33,16 @@
   z-index: 1000;
 }
 
-.menu-inner:before {
-  content: '';
-  position: absolute;
-  bottom: 20px;
-  left: 35px;
-  right: 15px;
-  height: 1px;
-  background: #70C178;
+.menu-wrap.menu-open .menu-inner {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 
 .menu-logo {
   position: absolute;
   top: 45px;
   left: 35px;
-  width: 100%;
+  width: calc(100% - 50px);
   text-decoration: none;
 }
 
@@ -54,19 +58,21 @@
 
 .menu-logo .logo-text {
   color: #f1f1f1;
-  font-size: 38px;
+  font-size: 28px;
   font-weight: 900;
   float: left;
   width: 100%;
   margin: 0;
   padding: 0;
+  letter-spacing: 1px;
 }
 
 .hid-men-wrap {
   width: 100%;
   left: 0;
   position: absolute;
-  top: 55%;
+  top: 50%;
+  transform: translateY(-50%);
   overflow: hidden;
 }
 
@@ -110,6 +116,15 @@
   color: #70C178;
 }
 
+.menu-card-wrap {
+  position: absolute;
+  bottom: 30px;
+  left: 35px;
+  right: 15px;
+  text-align: center;
+  z-index: 1001;
+}
+
 .morph-shape {
   position: absolute;
   width: 100%;
@@ -117,14 +132,37 @@
   top: 0;
   right: 0;
   fill: rgba(0, 0, 0, 0.71);
+  z-index: 999;
 }
 
 @media only screen and (max-width: 1064px) {
+  .menu-overlay {
+    width: 100%;
+    padding-left: 0;
+  }
+  
   .menu-wrap {
-    width: 320px;
+    width: 100%;
     bottom: 0;
     top: 70px;
-    padding: 0;
-    transform: translate3d(-320px, 0, 0);
+    padding-left: 0;
+  }
+  
+  .menu-logo {
+    left: 30px;
+    width: calc(100% - 60px);
+  }
+  
+  .menu-logo .logo-text {
+    font-size: 32px;
+  }
+  
+  .menu a {
+    padding: 12px 30px;
+  }
+
+  .menu-card-wrap {
+    left: 30px;
+    right: 30px;
   }
 }

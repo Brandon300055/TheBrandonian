@@ -8,7 +8,7 @@ const Footer = ({ onContactClick }) => {
   return (
     <footer className="main-footer">
       <p className="mail-link" onClick={onContactClick}>
-        <i className="fa fa-envelope" aria-hidden="true"></i>
+        <i className="fa fa-address-card" aria-hidden="true"></i>
       </p>
       
       <div className="footer-social">

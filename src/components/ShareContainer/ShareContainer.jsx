@@ -1,4 +1,3 @@
-
 // src/components/ShareContainer/ShareContainer.jsx
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -6,10 +5,10 @@ import './ShareContainer.css';
 
 const ShareContainer = ({ isOpen }) => {
   const socialLinks = [
-    { icon: 'fa-facebook', name: 'facebook', url: 'https://facebook.com/sharer/sharer.php?u=' },
-    { icon: 'fa-twitter', name: 'twitter', url: 'https://twitter.com/intent/tweet?url=' },
     { icon: 'fa-linkedin', name: 'linkedin', url: 'https://www.linkedin.com/shareArticle?mini=true&url=' },
-    { icon: 'fa-pinterest', name: 'pinterest', url: 'https://pinterest.com/pin/create/button/?url=' }
+    { icon: 'fa-twitter', name: 'twitter', url: 'https://twitter.com/intent/tweet?url=' },
+    { icon: 'fa-instagram', name: 'instagram', url: 'https://www.instagram.com/' },
+    { icon: 'fa-snapchat', name: 'snapchat', url: 'https://www.snapchat.com/' }
   ];
 
   const handleShare = (url) => {
