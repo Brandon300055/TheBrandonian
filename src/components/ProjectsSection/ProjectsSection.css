@@ -1,4 +1,3 @@
-
 /* src/components/ProjectsSection/ProjectsSection.css */
 .project-box {
   width: 100%;
@@ -40,6 +39,164 @@
 .project-box:hover h3,
 .project-box:hover h5 {
   color: #fff;
+}
+
+.app-store-section {
+  width: 100%;
+  margin: 60px 0 40px 0;
+}
+
+.app-store-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.app-store-header h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.app-store-icons {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.app-icon-link {
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.app-icon-link:hover {
+  transform: translateY(-5px);
+}
+
+.app-icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.app-icon-wrapper img {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.app-icon-wrapper img:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.app-icon-placeholder {
+  display: none;
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #70C178 0%, #4CAF50 100%);
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  font-weight: 700;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.app-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  text-align: center;
+}
+
+.app-store-description {
+  text-align: center;
+  font-size: 16px;
+  color: #666;
+  margin: 20px auto 0;
+  max-width: 600px;
+}
+
+.github-section {
+  width: 100%;
+  margin: 60px 0 40px 0;
+}
+
+.github-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.github-header h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.github-header p {
+  font-size: 16px;
+  color: #333;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.github-contribution-graph {
+  width: 100%;
+  text-align: center;
+}
+
+.github-contribution-graph img {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+  filter: brightness(0.85) contrast(1.1);
+}
+
+.github-contribution-graph img:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .app-store-section {
+    margin: 40px 0 30px 0;
+  }
+
+  .app-store-icons {
+    gap: 30px;
+  }
+
+  .app-icon-wrapper img,
+  .app-icon-placeholder {
+    width: 80px;
+    height: 80px;
+  }
+
+  .app-icon-placeholder {
+    font-size: 36px;
+  }
+
+  .github-section {
+    margin: 40px 0 30px 0;
+  }
+
+  .github-header h3 {
+    font-size: 22px;
+  }
+
+  .github-header p {
+    font-size: 14px;
+  }
 }
 
 .order-wrap {

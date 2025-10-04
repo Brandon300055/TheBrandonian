@@ -1,5 +1,5 @@
 // src/components/ResumeSection/ResumeSection.jsx
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import './ResumeSection.css';
@@ -9,6 +9,23 @@ const ResumeSection = () => {
     threshold: 0.3,
     triggerOnce: true
   });
+
+  const parallaxRef = useRef(null);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (parallaxRef.current && sectionRef.current) {
+        const sectionTop = sectionRef.current.offsetTop;
+        const scrolled = window.scrollY;
+        const offset = (scrolled - sectionTop) * 0.3;
+        parallaxRef.current.style.transform = `translate3d(0px, ${offset}px, 0px)`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const resumeItems = [
     {
@@ -20,7 +37,7 @@ const ResumeSection = () => {
       role: 'Student',
       details: [
         'Vice President, ACM (Association for Computing Machinery)',
-        'Participated in multiple university-level coding competitions, demonstrating strong coding and problem-solving skills in a competitive environment'
+        'Competed in university coding competitions, demonstrating advanced problem-solving and algorithmic skills'
       ]
     },
     {
@@ -31,20 +48,20 @@ const ResumeSection = () => {
       period: '2015-2016',
       role: 'Jr. Developer',
       details: [
-        'Collaborated with team members to develop web applications and gain experience in software development'
+        'Collaborated on web application development, gaining foundational software engineering experience'
       ]
     },
     {
       type: 'work',
       icon: 'fa-briefcase',
       title: 'Net Soft/SUW Design',
-      subtitle: 'St George, UT',
+      subtitle: 'St. George, UT',
       period: '2016-2019',
       role: 'Software Engineer',
       details: [
-        'Worked on multiple software projects, including iOS and Android mobile app development',
-        'Refined skills in frontend and backend development',
-        'Contributed to CRM data import systems and integration'
+        'Developed iOS and Android applications, improving mobile accessibility and usability',
+        'Contributed to CRM data import systems and integration pipelines',
+        'Refined skills in frontend and backend development, delivering reliable software solutions'
       ]
     },
     {
@@ -55,47 +72,59 @@ const ResumeSection = () => {
       period: '2019-2021',
       role: 'Co-founder',
       details: [
-        'Co-founded data-driven startup in an incubator environment',
-        'Successfully led the company to a pre-Series A valuation of $500k within 9 months',
-        'Integrated with Amazon and eBay APIs',
-        'Utilized Laravel and Vue for web development',
-        'Managed a small dev team, emphasizing Lean methodology'
+        'Co-founded a data-driven startup, achieving $500k pre-Series A valuation in 9 months',
+        'Integrated Amazon and eBay APIs for cross-platform product listings and real-time inventory syncing',
+        'Led development team using Lean methodology, translating validated ideas into production-ready solutions'
       ]
     },
     {
       type: 'work',
       icon: 'fa-briefcase',
-      title: 'Contractor',
-      subtitle: 'Phoenix AZ / London UK',
-      period: '2021-present',
+      title: 'Alpha Terris',
+      subtitle: 'Phoenix, AZ / London, UK',
+      period: '2021-2023',
       role: 'Software Engineer',
       details: [
-        'Worked on multiple software projects, including iOS and Android mobile app development',
-        'Refined skills in frontend and backend development',
-        'Contributed to CRM data import systems and integration'
+        'Designed HIPAA-compliant EMR systems integrating OpenAI ChatGPT for automating clinical notes, insurance claims, and record summarization',
+        'Implemented production-grade neural networks for anomaly detection and computer vision, improving healthcare workflow efficiency',
+        'Leveraged Pinecone vector databases for semantic search and context retrieval across large datasets',
+        'Delivered secure software solutions for regulated industries, balancing innovation with compliance'
+      ]
+    },
+    {
+      type: 'work',
+      icon: 'fa-briefcase',
+      title: 'Farran Media',
+      subtitle: 'Phoenix, AZ',
+      period: '2024-2025',
+      role: 'Lead Frontend Engineer',
+      details: [
+        'Led frontend React Native development team, delivering the Dentaltown mobile application for dental professionals',
+        'Architected key features to ensure seamless mobile-first experience',
+        'Oversaw code quality and cross-functional collaboration, setting technical strategy for scalable, maintainable applications'
       ]
     }
   ];
 
   return (
-    <section id="sec4" className="scroll-con-sec dec-sec" ref={ref}>
+    <section id="sec4" className="scroll-con-sec dec-sec" ref={(el) => { ref(el); sectionRef.current = el; }}>
       <div className="container">
-        <motion.div 
+        <motion.div
           className="section-title"
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <div className="parallax-title right-pos">My Résumé</div>
+          <div className="parallax-title right-pos" ref={parallaxRef}>Résumé</div>
           <h2>Résumé</h2>
-          <p>Where the willingness is great, the difficulties cannot be great. -Machiavelli</p>
+          <p>"Innovation distinguishes between a leader and a follower"<br />-Steve Jobs</p>
           <div className="clearfix"></div>
           <span className="bold-separator"></span>
         </motion.div>
 
         <div className="custom-inner-holder">
           {resumeItems.map((item, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               className="custom-inner"
               initial={{ opacity: 0, x: -50 }}
@@ -123,7 +152,7 @@ const ResumeSection = () => {
           ))}
         </div>
 
-        <a 
+        <a
           href="https://docs.google.com/document/d/1N1tsowVguHzywbAR66xq6uxKfYdxRguJFyab8B9BuL8/edit?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"

@@ -1,5 +1,5 @@
 // src/components/SkillsSection/SkillsSection.jsx
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,10 +8,32 @@ import { faPlug, faDatabase, faBrain, faCodeBranch } from '@fortawesome/free-sol
 import './SkillsSection.css';
 
 const SkillsSection = () => {
-  const [ref, inView] = useInView({
+  const [inViewRef, inView] = useInView({
     threshold: 0.3,
     triggerOnce: true
   });
+
+  const parallaxRef = useRef(null);
+  const sectionRef = useRef(null);
+
+  const setRefs = (element) => {
+    sectionRef.current = element;
+    inViewRef(element);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (parallaxRef.current && sectionRef.current) {
+        const sectionTop = sectionRef.current.offsetTop;
+        const scrolled = window.scrollY;
+        const offset = (scrolled - sectionTop) * 0.3;
+        parallaxRef.current.style.transform = `translate3d(0px, ${offset}px, 0px)`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const skillRows = [
     [
@@ -37,7 +59,7 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section id="sec6" className="scroll-con-sec dec-sec" ref={ref}>
+    <section id="sec6" className="scroll-con-sec dec-sec" ref={setRefs}>
       <div className="container">
         <motion.div 
           className="section-title"
@@ -73,8 +95,24 @@ const SkillsSection = () => {
             ))}
           </motion.div>
         ))}
+
+        {/* Amazon / Voice Section */}
+        <div className="custom-inner text-center" style={{ marginTop: '40px' }}>
+          <div className="row">
+            <div className="col-12">
+              <h3 style={{ marginBottom: '5px' }}>
+                Full-Stack Capabilities: AWS (S3, EC2, Elastic Beanstalk, IAM, Lambda, CloudFront)
+              </h3>
+            </div>
+            <div className="col-12">
+              <div className="box-header alexa-skill work">
+                <h3>Try My Alexa Skill, just say: "Alexa, open the Brandon is Nifty Skill!"</h3>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="parallax-title right-pos">Skills</div>
+      <div className="parallax-title right-pos" ref={parallaxRef}>Skills</div>
     </section>
   );
 };

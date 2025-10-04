@@ -1,17 +1,39 @@
 // src/components/ReferenceSection/ReferenceSection.jsx
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import './ReferenceSection.css';
 
 const ReferenceSection = () => {
-  const [ref, inView] = useInView({
+  const [inViewRef, inView] = useInView({
     threshold: 0.3,
     triggerOnce: true
   });
 
+  const parallaxRef = useRef(null);
+  const sectionRef = useRef(null);
+
+  const setRefs = (element) => {
+    sectionRef.current = element;
+    inViewRef(element);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (parallaxRef.current && sectionRef.current) {
+        const sectionTop = sectionRef.current.offsetTop;
+        const scrolled = window.scrollY;
+        const offset = (scrolled - sectionTop) * 0.3;
+        parallaxRef.current.style.transform = `translate3d(0px, ${offset}px, 0px)`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <section id="sec7" className="scroll-con-sec" ref={ref}>
+    <section id="sec7" className="scroll-con-sec" ref={setRefs}>
       <div className="container">
         <motion.div 
           className="section-title"
@@ -52,7 +74,7 @@ const ReferenceSection = () => {
           </div>
         </motion.div>
       </div>
-      <div className="parallax-title right-pos">Reference</div>
+      <div className="parallax-title right-pos" ref={parallaxRef}>Reference</div>
     </section>
   );
 };
