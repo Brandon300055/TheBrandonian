@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import './AboutSection.css';
@@ -11,6 +11,8 @@ const AboutSection = () => {
 
   const parallaxRef = useRef(null);
   const sectionRef = useRef(null);
+  const [isImageOpen, setIsImageOpen] = useState(false);
+  const [zoomedImage, setZoomedImage] = useState('');
 
   const setRefs = (element) => {
     sectionRef.current = element;
@@ -30,6 +32,16 @@ const AboutSection = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleImageClick = (imageSrc) => {
+    setZoomedImage(imageSrc);
+    setIsImageOpen(true);
+  };
+
+  const closeImage = () => {
+    setIsImageOpen(false);
+    setZoomedImage('');
+  };
 
   return (
     <section id="sec2" className="scroll-con-sec dec-sec" ref={setRefs}>
@@ -112,7 +124,10 @@ const AboutSection = () => {
               <div className="col-md-6">
                 <div className="box-item vis-det fl-wrap">
                   <img src="/images/the_office.jpg" className="respimg" alt="Office" />
-                  <a data-src="/images/the_office.jpg" className="image-popup">
+                  <a 
+                    className="image-popup"
+                    onClick={() => handleImageClick('/images/the_office.jpg')}
+                  >
                     <i className="fa fa-search"></i>
                   </a>
                 </div>
@@ -197,6 +212,14 @@ const AboutSection = () => {
         </motion.div>
 
       </div>
+
+      {/* Image Zoom Modal */}
+      {isImageOpen && (
+        <div className="image-zoom-modal" onClick={closeImage}>
+          <span className="close-zoom" onClick={closeImage}>&times;</span>
+          <img src={zoomedImage} alt="Zoomed" className="zoomed-image" />
+        </div>
+      )}
     </section>
   );
 };

@@ -124,6 +124,61 @@
   height: auto;
 }
 
+/* Image Zoom Modal Styles */
+.image-zoom-modal {
+  display: flex;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+
+.zoomed-image {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 90vh;
+  object-fit: contain;
+  animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.close-zoom {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+.close-zoom:hover,
+.close-zoom:focus {
+  color: #70C178;
+  text-decoration: none;
+}
+
 /* Bootstrap Grid Support */
 .container {
   max-width: 1024px;
@@ -174,6 +229,12 @@
   .col-md-8 {
     flex: 0 0 100%;
     max-width: 100%;
+  }
+
+  .close-zoom {
+    top: 5px;
+    right: 15px;
+    font-size: 35px;
   }
 }
 
