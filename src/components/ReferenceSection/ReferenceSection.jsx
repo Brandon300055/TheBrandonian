@@ -62,7 +62,7 @@ const ReferenceSection = () => {
       name: 'Nick Avanaus',
       title: 'Software Engineer',
       relationship: 'Colleague',
-      email: '', // Empty email
+      email: 'NONE', // Empty email
       phone: 'NjAyLTczOC04MTM3', // Base64 encoded
       phoneLink: 'NjAyNzM4ODEzNw==', // Base64 encoded
       company: 'Farran Media',

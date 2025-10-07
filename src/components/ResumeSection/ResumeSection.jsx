@@ -5,9 +5,18 @@ import { useInView } from 'react-intersection-observer';
 import './ResumeSection.css';
 
 const ResumeSection = () => {
+  // Dynamically set threshold based on screen size
+  const getThreshold = () => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth <= 768 ? 0.1 : 0.3;
+    }
+    return 0.3;
+  };
+
   const [ref, inView] = useInView({
-    threshold: 0.3,
-    triggerOnce: true
+    threshold: getThreshold(),
+    triggerOnce: true,
+    rootMargin: '0px 0px -50px 0px' // Trigger slightly before element is fully in view
   });
 
   const parallaxRef = useRef(null);
@@ -32,7 +41,7 @@ const ResumeSection = () => {
       type: 'edu',
       icon: 'fa-graduation-cap',
       title: 'Computer Science',
-      subtitle: 'SUU, UT',
+      subtitle: 'UTU, UT',
       period: '2016-2020',
       role: 'Student',
       details: [
@@ -153,12 +162,12 @@ const ResumeSection = () => {
         </div>
 
         <a
-          href="https://docs.google.com/document/d/1N1tsowVguHzywbAR66xq6uxKfYdxRguJFyab8B9BuL8/edit?usp=sharing"
+          href="https://docs.google.com/document/d/1sX_PeqVo9HuBzRQzYvheHxptrYhk8aHQgP9h-_lVLWY/edit?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           className="btn hide-icon"
         >
-          <i className="fa fa-file-pdf-o"></i>
+          <i className="fa fa-file"></i>
           <span>Download Résumé</span>
         </a>
       </div>

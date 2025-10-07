@@ -4,9 +4,18 @@ import { useInView } from 'react-intersection-observer';
 import './AboutSection.css';
 
 const AboutSection = () => {
+  // Dynamically set threshold based on screen size
+  const getThreshold = () => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth <= 768 ? 0.1 : 0.3;
+    }
+    return 0.3;
+  };
+
   const [inViewRef, inView] = useInView({
-    threshold: 0.3,
-    triggerOnce: true
+    threshold: getThreshold(),
+    triggerOnce: true,
+    rootMargin: '0px 0px -50px 0px' // Trigger slightly before element is fully in view
   });
 
   const parallaxRef = useRef(null);
