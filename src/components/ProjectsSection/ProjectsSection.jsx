@@ -6,14 +6,13 @@ import './ProjectsSection.css';
 
 const ProjectsSection = ({ onContactClick }) => {
   const [inViewRef, inView] = useInView({
-    threshold: 0.3,
+    threshold: 0.1,
     triggerOnce: true
   });
 
   const parallaxRef = useRef(null);
   const sectionRef = useRef(null);
 
-  // Combine refs
   const setRefs = (element) => {
     sectionRef.current = element;
     inViewRef(element);
@@ -33,91 +32,275 @@ const ProjectsSection = ({ onContactClick }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const projects = [
-    {
-      title: 'Spacelander',
-      description: 'Developed a large-scale, SaaS-based platform for identifying potential markets.',
-      link: 'https://spacelander.io'
-    },
-    {
-      title: 'Neural-Network-From-Scratch',
-      description: 'Implemented a basic neural network in Python to explore AI and machine learning concepts.',
-      link: 'https://github.com/Brandon300055/Neural-Network-From-Scratch'
-    },
-    {
-      title: 'Hotdog-Not-Hotdog',
-      description: "Developed an image classifier inspired by HBO's Silicon Valley to identify hotdogs in images.",
-      link: 'https://github.com/Brandon300055/Hotdog-Not-Hotdog'
-    },
-    {
-      title: 'Starving Student Card App',
-      description: 'Location-based app for students, utilizing the Haversine formula for distance calculation.',
-      link: 'https://play.google.com/store/apps/details?id=com.suwdesign.ssc'
-    }
-  ];
-
   return (
     <section id="sec5" className="scroll-con-sec dec-sec" ref={setRefs}>
       <div className="sec-dec right-rot"></div>
       <div className="container">
-        <motion.div 
-          className="section-title"
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
+        <div className="section-title">
           <h2>Projects</h2>
-          <p>"Innovation distinguishes between a leader and a follower" -Steve Jobs</p>
+          <p>"The only way to do great work is to love what you do."<br /> - Steve Jobs</p>
           <div className="clearfix"></div>
           <span className="bold-separator"></span>
-        </motion.div>
-
-        <div className="row">
-          {projects.map((project, index) => (
-            <motion.div 
-              key={index}
-              className="col-md-6"
-              initial={{ opacity: 0, y: 50 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-            >
-              <a href={project.link} target="_blank" rel="noopener noreferrer">
-                <div className="project-box">
-                  <h3>{project.title}</h3>
-                  <h5>{project.description}</h5>
-                </div>
-              </a>
-            </motion.div>
-          ))}
         </div>
 
-        <motion.div 
-          className="github-section"
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
-          <div className="github-header">
-            <h3>GitHub Activity</h3>
-            <p>A visual representation of my daily contributions and commitment to continuous development</p>
+        {/* Town Apps */}
+        <div className="project-card">
+          <div className="project-card-header">
+            <i className="fa fa-mobile project-icon"></i>
+            <h3>Town Apps Platform</h3>
+            <span className="badge-cofounder">Health Project</span>
           </div>
-          <div className="github-contribution-graph">
-            <img 
-              src="https://ghchart.rshah.org/4CAF50/Brandon300055"
-              alt="GitHub Contribution Graph"
-            />
+          <p className="project-tagline">Professional iOS & Android apps for dental industry</p>
+          <div className="app-icons-grid">
+            <a href="https://apps.apple.com/us/app/dentaltown/id640834699" target="_blank" rel="noopener noreferrer" className="app-icon-item">
+              <img src="/images/dt.webp" alt="Dentaltown" />
+              <span>Dentaltown</span>
+            </a>
+            <a href="https://apps.apple.com/us/app/orthotown/id666587350" target="_blank" rel="noopener noreferrer" className="app-icon-item">
+              <img src="/images/ot.webp" alt="Orthotown" />
+              <span>Orthotown</span>
+            </a>
+            <a href="https://apps.apple.com/us/app/hygienetown/id666562322" target="_blank" rel="noopener noreferrer" className="app-icon-item">
+              <img src="/images/ht.webp" alt="Hygienetown" />
+              <span>Hygienetown</span>
+            </a>
           </div>
-        </motion.div>
+          <div className="tech-tags">
+            <span>React Native</span>
+            <span>iOS</span>
+            <span>Android</span>
+            <span>API Integration</span>
+          </div>
+        </div>
 
-        <div className="order-wrap fl-wrap color-bg">
-          <div className="row">
-            <div className="col-md-8">
-              <h4>Let me know if you want to work together</h4>
+        {/* Starving Student Card */}
+        <div className="project-card">
+          <div className="project-card-header">
+            <i className="fa fa-map-marker project-icon"></i>
+            <h3>Starving Student Card</h3>
+          </div>
+          <p className="project-tagline">Location-based student discount app</p>
+          <div className="ssc-layout">
+            <div className="ssc-visual">
+              <img src="/images/ssc.webp" alt="Starving Student Card" />
             </div>
-            <div className="col-md-4">
-              <button className="ord-link openModal" onClick={onContactClick}>
-                Get In Touch
-              </button>
+            <div className="ssc-content">
+              <div className="ssc-stats">
+                <div className="stat-item">
+                  <i className="fa fa-users"></i>
+                  <strong>15K+</strong>
+                  <span>Active Users</span>
+                </div>
+                <div className="stat-item">
+                  <i className="fa fa-building"></i>
+                  <strong>200+</strong>
+                  <span>Partners</span>
+                </div>
+                <div className="stat-item">
+                  <i className="fa fa-map"></i>
+                  <strong>3 Cities</strong>
+                  <span>Coverage</span>
+                </div>
+              </div>
+              <ul className="feature-list">
+                <li><i className="fa fa-check"></i> GPS-based distance calculations with Haversine formula</li>
+                <li><i className="fa fa-check"></i> Real-time merchant deals and exclusive discounts</li>
+                <li><i className="fa fa-check"></i> Student email verification system</li>
+                <li><i className="fa fa-check"></i> Push notifications for nearby deals</li>
+              </ul>
+            </div>
+          </div>
+          <div className="bottom-row">
+            <div className="tech-tags">
+              <span>React Native</span>
+              <span>Laravel</span>
+              <span>Hybrid App</span>
+              <span>GPS API</span>
+            </div>
+            <a 
+              href="https://play.google.com/store/apps/details?id=com.suwdesign.ssc&hl=en_US&gl=US"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn hide-icon"
+            >
+              <i className="fab fa-google-play"></i>
+              <span>Download App</span>
+            </a>
+          </div>
+        </div>
+
+        {/* ForBright Bank */}
+        <div className="project-card">
+          <div className="project-card-header">
+            <i className="fa fa-university project-icon"></i>
+            <h3>ForBright Bank</h3>
+            <span className="badge-cofounder">Financial Project</span>
+          </div>
+          <p className="project-tagline">Digital banking platform development</p>
+          <p className="project-description">
+            Led full-stack development for a modern banking platform, creating secure loan processing systems and 
+            completely redesigning the customer-facing interface for improved user experience.
+          </p>
+          <div className="dual-focus">
+            <div className="focus-item">
+              <i className="fa fa-server"></i>
+              <h4>Laravel Backend</h4>
+              <p>Loan processing infrastructure & secure REST APIs</p>
+            </div>
+            <div className="focus-item">
+              <i className="fa fa-paint-brush"></i>
+              <h4>Vue.js Frontend</h4>
+              <p>Complete UI/UX rebranding & responsive design</p>
+            </div>
+          </div>
+          <div className="tech-tags">
+            <span>Laravel</span>
+            <span>Vue.js</span>
+            <span>MySQL</span>
+            <span>REST API</span>
+          </div>
+          <a 
+            href="https://www.forbrightbank.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn hide-icon"
+          >
+            <i className="fa fa-external-link"></i>
+            <span>Visit Site</span>
+          </a>
+        </div>
+
+        {/* EMRDesk */}
+        <div className="project-card">
+          <div className="project-card-header">
+            <i className="fa fa-heartbeat project-icon"></i>
+            <h3>EMRDesk Platform</h3>
+            <span className="badge-cofounder">Health Project</span>
+          </div>
+          <p className="project-tagline">Electronic medical records management system</p>
+          <p className="project-description">
+            Built a comprehensive healthcare platform with enterprise-grade security on Firebase, handling sensitive 
+            patient data for multiple medical practices with real-time synchronization and AI-powered doctor notes and patient record summarization.
+          </p>
+          <div className="dual-focus">
+            <div className="focus-item">
+              <i className="fa fa-shield"></i>
+              <h4>HIPAA Compliance</h4>
+              <p>256-bit encryption & BAA-compliant infrastructure</p>
+            </div>
+            <div className="focus-item">
+              <i className="fa fa-fire"></i>
+              <h4>Firebase Backend</h4>
+              <p>Real-time database & cloud functions</p>
+            </div>
+          </div>
+          <div className="tech-tags">
+            <span>Firebase</span>
+            <span>HIPAA Compliant</span>
+            <span>AI Integration</span>
+            <span>NoSQL</span>
+          </div>
+          <a 
+            href="https://emrdesk.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn hide-icon"
+          >
+            <i className="fa fa-heartbeat"></i>
+            <span>Learn More</span>
+          </a>
+        </div>
+
+        {/* SpaceLander */}
+        <div className="project-card startup-card">
+          <div className="project-card-header">
+            <i className="fa fa-rocket project-icon"></i>
+            <h3>SpaceLander.io</h3>
+            <span className="badge-cofounder">Co-founder</span>
+          </div>
+          <p className="project-tagline">E-commerce market analysis SaaS platform</p>
+          <div className="achievement-stats">
+            <div className="stat">
+              <i className="fa fa-dollar-sign"></i>
+              <h4>$500K</h4>
+              <p>Pre-Series A</p>
+            </div>
+            <div className="stat">
+              <i className="fa fa-calendar"></i>
+              <h4>9 months</h4>
+              <p>To valuation</p>
+            </div>
+            <div className="stat">
+              <i className="fa fa-plug"></i>
+              <h4>2 APIs</h4>
+              <p>Amazon + eBay</p>
+            </div>
+          </div>
+          <div className="tech-tags">
+            <span>Laravel</span>
+            <span>Vue.js</span>
+            <span>Data Analytics</span>
+            <span>Lean Methodology</span>
+          </div>
+          <p className="note-text"><i className="fa fa-info-circle"></i> Platform no longer live</p>
+        </div>
+
+        {/* This Site */}
+        <div className="project-card">
+          <div className="project-card-header">
+            <i className="fab fa-react project-icon"></i>
+            <h3>TheBrandonian</h3>
+          </div>
+          <p className="project-tagline">This portfolio site you're viewing right now</p>
+          <div className="tech-tags">
+            <span>React</span>
+            <span>Framer Motion</span>
+            <span>Custom Animations</span>
+            <span>Responsive Design</span>
+          </div>
+          <a 
+            href="https://github.com/Brandon300055/TheBrandonian"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn hide-icon"
+          >
+            <i className="fab fa-github"></i>
+            <span>View Code</span>
+          </a>
+        </div>
+
+        {/* GitHub Section */}
+        <div className="github-container">
+          <h3 className="github-container-header"><i className="fab fa-github"></i> Open Source & GitHub Activity</h3>
+          
+          {/* GitHub Projects */}
+          <div className="other-projects-section">
+            <div className="github-projects-grid">
+              <a href="https://github.com/Brandon300055/Neural-Network-From-Scratch" target="_blank" rel="noopener noreferrer" className="project-box">
+                <i className="fa fa-brain"></i>
+                <h3>Neural Network From Scratch</h3>
+                <h5>Pure Python implementation exploring AI fundamentals</h5>
+              </a>
+              <a href="https://github.com/Brandon300055/Hotdog-Not-Hotdog" target="_blank" rel="noopener noreferrer" className="project-box">
+                <i className="fa fa-hotdog"></i>
+                <h3>Hotdog-Not-Hotdog</h3>
+                <h5>Computer vision classifier inspired by Silicon Valley</h5>
+              </a>
+            </div>
+          </div>
+
+          {/* GitHub Activity */}
+          <div className="github-section">
+            <div className="github-header">
+              <p>My GitHub Contribution Graph: Showcasing consistent commitment to growth</p>
+            </div>
+            <div className="github-contribution-graph">
+              <a href="https://github.com/Brandon300055" target="_blank" rel="noopener noreferrer">
+                <img 
+                  src="https://ghchart.rshah.org/4CAF50/Brandon300055"
+                  alt="GitHub Contribution Graph"
+                />
+              </a>
             </div>
           </div>
         </div>

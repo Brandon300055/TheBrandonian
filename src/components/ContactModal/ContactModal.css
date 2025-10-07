@@ -29,14 +29,31 @@
   font-size: 10px;
 }
 
-.phone-top {
+.phone-container {
   position: absolute;
   top: 25px;
   left: 30px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.phone-top {
   font-size: 12px;
   cursor: pointer;
   color: #000000;
   text-decoration: none;
+}
+
+.phone-copy {
+  font-size: 10px;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.phone-copy:hover {
+  opacity: 1;
 }
 
 .company {

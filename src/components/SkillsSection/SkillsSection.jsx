@@ -38,7 +38,7 @@ const SkillsSection = () => {
   const skillRows = [
     [
       { icon: faLaravel, name: 'Laravel' },
-      { icon: faAws, name: 'AWS' },
+      { icon: faReact, name: 'React' },
       { icon: faVuejs, name: 'Vue.js' }
     ],
     [
@@ -47,34 +47,35 @@ const SkillsSection = () => {
       { icon: faPython, name: 'Python' }
     ],
     [
-      { icon: faPlug, name: "Rest API's" },
+      { icon: faPlug, name: "API's" },
       { icon: faAppStore, name: 'iOS/Android Development' },
       { icon: faDatabase, name: 'SQL/ORM' }
     ],
     [
+      { icon: faAws, name: 'AWS/Gcloud' },
       { icon: faBrain, name: 'Deep Learning' },
       { icon: faCodeBranch, name: 'Git/Project Management' },
-      { icon: faReact, name: 'React' }
+
     ]
   ];
 
   return (
     <section id="sec6" className="scroll-con-sec dec-sec" ref={setRefs}>
       <div className="container">
-        <motion.div 
+        <motion.div
           className="section-title"
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
           <h2>Skills</h2>
-          <p>"The question isn't who is going to let me; it's who is going to stop me." -Ayn Rand</p>
+          <p>"The impediment to action advances action. What stands in the way becomes the way." <br /> - Marcus Aurelius</p>
           <div className="clearfix"></div>
           <span className="bold-separator"></span>
         </motion.div>
 
         {skillRows.map((row, rowIndex) => (
-          <motion.div 
+          <motion.div
             key={rowIndex}
             className="skills-wrap"
             style={{ display: 'flex' }}
@@ -83,7 +84,7 @@ const SkillsSection = () => {
             transition={{ duration: 0.6, delay: rowIndex * 0.15 }}
           >
             {row.map((skill, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 style={{ padding: '30px', margin: 'auto' }}
                 whileHover={{ scale: 1.1 }}

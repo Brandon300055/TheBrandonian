@@ -1,22 +1,22 @@
-// src/components/ContactModal/ContactModal.jsx
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './ContactModal.css';
 
-const ContactModal = ({ isOpen, onClose }) => {
+const ContactModal = ({ isOpen, onClose, contactInfo }) => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [phoneLink, setPhoneLink] = useState('');
 
   useEffect(() => {
+    // Default encoded values
     const encodedEmail = 'YnJhbmRvbnN0ZXdhcnQzMDAwNTVAZ21haWwuY29t';
     const encodedPhone = 'NTE4LTg2Ny01MDE4';
     const encodedPhoneLink = 'MTUxODg2NzUwMTg=';
-    
-    setEmail(atob(encodedEmail));
-    setPhone(atob(encodedPhone));
-    setPhoneLink(atob(encodedPhoneLink));
-  }, []);
+
+    setEmail(contactInfo?.email || atob(encodedEmail));
+    setPhone(contactInfo?.phone || atob(encodedPhone));
+    setPhoneLink(contactInfo?.phoneLink || atob(encodedPhoneLink));
+  }, [contactInfo]);
 
   const copyToClipboard = (text, elementId) => {
     navigator.clipboard.writeText(text);
@@ -28,6 +28,11 @@ const ContactModal = ({ isOpen, onClose }) => {
       }, 1000);
     }
   };
+
+  const companyName = contactInfo?.company || "Pierce & Pierce";
+  const companySub = contactInfo?.companySub || "Mergers And Acquisitions";
+  const name = contactInfo?.name || "Brandon Stewart";
+  const title = contactInfo?.title || "Software Engineer";
 
   return (
     <AnimatePresence>
@@ -48,15 +53,21 @@ const ContactModal = ({ isOpen, onClose }) => {
           >
             <span className="close" onClick={onClose}>&times;</span>
             
-            <a href={`tel:${phoneLink}`} className="phone-top">{phone}</a>
-            
-            <div className="company">
-              Pierce &amp; Pierce
-              <span className="company-sub">Mergers And Acquisitions</span>
+            <div className="phone-container">
+              <a href={`tel:${phoneLink}`} className="phone-top" id="phone">{phone}</a>
+              <i 
+                className="fas fa-copy copy-btn phone-copy" 
+                onClick={() => copyToClipboard(phone, '#phone')}
+              ></i>
             </div>
             
-            <h2 className="name">Brandon Stewart</h2>
-            <h3 className="title">Software Engineer</h3>
+            <div className="company">
+              {companyName}
+              <span className="company-sub">{companySub}</span>
+            </div>
+            
+            <h2 className="name">{name}</h2>
+            <h3 className="title">{title}</h3>
             
             <div className="bottom-info">
               <span id="email">{email}</span>
