@@ -47,7 +47,7 @@ const ProjectsSection = ({ onContactClick }) => {
         <div className="project-card">
           <div className="project-card-header">
             <i className="fa fa-mobile project-icon"></i>
-            <h3>Townies Apps Platform</h3>
+            <h3>The Townies</h3>
             <span className="badge-cofounder">Health Project</span>
           </div>
           <p className="project-tagline">Professional iOS & Android apps for dental industry</p>
