@@ -7,9 +7,9 @@ const AboutSection = () => {
   // Dynamically set threshold based on screen size
   const getThreshold = () => {
     if (typeof window !== 'undefined') {
-      return window.innerWidth <= 768 ? 0.1 : 0.3;
+      return window.innerWidth <= 768 ? 0.1 : 0.1;
     }
-    return 0.3;
+    return 0.1;
   };
 
   const [inViewRef, inView] = useInView({
